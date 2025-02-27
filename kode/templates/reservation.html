@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reserver Bord</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Reserver Bord</h1>
+    </header>
+    <main>
+        <form id="reservationForm" action="/contact" method="get">
+            <label for="people">Antall personer:</label>
+            <input type="number" id="people" required min="1" max="50">
+
+            <label for="date">Dato:</label>
+            <input type="date" id="date" required>
+
+            <label for="time">Tidspunkt:</label>
+            <select id="time" required></select>
+
+            <label for="additionalNotes">Tilleggsinformasjon:</label>
+            <textarea id="additionalNotes" placeholder=""></textarea>
+
+            <button type="button" id="nextButton">Neste</button>
+        </form>
+        <a href="{{ url_for('index') }}"><button>Tilbake til hovedmeny</button></a>
+    </main>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
