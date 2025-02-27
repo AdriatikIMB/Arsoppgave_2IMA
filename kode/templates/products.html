@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produkter</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Produkter</h1>
+        <a href="/">Hjem</a> | <a href="/cart">Handlekurv</a>
+    </header>
+    <main>
+        <h2>Våre produkter</h2>
+        <ul>
+            {% for product in products %}
+            <li>
+                <strong>{{ product[1] }}</strong> - {{ product[2] }} kr
+                <form action="/cart" method="POST">
+                    <input type="hidden" name="product_id" value="{{ product[0] }}">
+                    <input type="number" name="quantity" value="1" min="1">
+                    <button type="submit">Legg til i handlekurv</button>
+                </form>
+            </li>
+            {% endfor %}
+        </ul>
+    </main>
+</body>
+</html>

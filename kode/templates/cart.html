@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Handlekurv</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Handlekurv</h1>
+        <a href="/">Hjem</a> | <a href="/products">Tilbake til produkter</a>
+    </header>
+    <main>
+        <h2>Dine varer</h2>
+        {% if cart %}
+        <ul>
+            {% for item in cart %}
+            <li>
+                <strong>{{ item[1] }}</strong> - {{ item[2] }} stk - {{ item[3] }} kr
+            </li>
+            {% endfor %}
+        </ul>
+        <form action="/checkout" method="POST">
+            <button type="submit">Gå til betaling</button>
+        </form>
+        {% else %}
+        <p>Handlekurven er tom.</p>
+        {% endif %}
+    </main>
+</body>
+</html>
